@@ -24,11 +24,14 @@ while True:
     # Böylece sadece kırmızı nesne görünecek, diğerleri siyah olacak
     result = cv2.bitwise_and(frame, frame, mask=mask)
 
+    # Sonucu RGB formatına dönüştür
+    rgb_result = cv2.cvtColor(result, cv2.COLOR_HSV2BGR)
+
     # Orijinal görüntüyü ekranda göster
     cv2.imshow("Original", frame)
 
     # Sonucu ekranda göster
-    cv2.imshow("Result", result)
+    cv2.imshow("Result", rgb_result)
 
     # q tuşuna basıldığında döngüyü kır
     if cv2.waitKey(1) & 0xFF == ord('q'):
